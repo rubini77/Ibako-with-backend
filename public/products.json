@@ -1,0 +1,51 @@
+[
+    {
+        "id": 1,
+        "name":" Cakes",
+        "price": 20,
+        "image": "test-4-img.jpg"
+    },
+    {
+        "id": 2,
+        "name":" Cakes",
+        "price": 25,
+        "image": "test-2-img.jpg"
+    },
+    {
+        "id": 3,
+        "name":" Cakes",
+        "price": 29,
+        "image": "test-3-img.jpg"
+    },
+    {
+        "id": 4,
+        "name":" Ice Creams",
+        "price": 20,
+        "image": "test-4-img.jpg"
+    },
+    {
+        "id": 5,
+        "name":" Ice Creams",
+        "price": 30,
+        "image": "test-5-img.jpg"
+    },
+    {
+        "id": 6,
+        "name":" Donuts",
+        "price": 200,
+        "image": "test-6-img.jpg"
+    },
+    {
+        "id": 7,
+        "name":" Donuts",
+        "price": 200,
+        "image": "test-7-img.jpg"
+    },
+    {
+        "id": 8,
+        "name":" Cakes",
+        "price": 200,
+        "image": "test-3-img.jpg"
+    }
+
+]

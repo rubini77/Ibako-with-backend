@@ -1,19 +1,20 @@
 <template>
     <!-- <HeaderComponent></HeaderComponent> -->
     <input type="checkbox" id="cart">
-    <!-- <HeaderComponent></HeaderComponent> -->
     <label for="cart" class="label-cart p-4 mt-3 ">
         <svg style="color: palevioletred;" xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
         <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
         </svg></label>
     
+    
     <!-- Dashboard -->
     <div class="p-3">
         <ul class="navbar-nav mx-auto gap-2 animate__animated animate__backInDown">
+            
                 
             <li class="nav-item bg-white">
             <a class="nav-link active my-2 p-4 fs-3 fw-4" style="background-color: #FBEDE5;border-radius: 20px;"  aria-current="page" href="#">Products</a>
-
+                
             </li>
         </ul>
 </div>
@@ -27,6 +28,8 @@
             <a href="#">Promotion</a>
             <a href="#">Top Rated</a>
             <a href="#">All</a>
+            
+            
         </div>
         <!-- :key="Menu.id" -->
         <div class="dashboard-content" >
@@ -43,12 +46,14 @@
             </div>
         </div>
     </div>
+    overflow
     <!-- Order dashboard -->
     <div class="dashboard-order">
+        
         <h3>Order-Menu</h3>
         <div class="order-address">
             <p>Address Delivery</p>
-            <h4>130 Kalavasal Byepass Road, Madurai-05</h4>
+            <h4>130 Alagappapuram, Kraikudi-05</h4>
         </div>
         <div class="order-time">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16">
@@ -77,10 +82,7 @@
             <p>Subtotal <span>Rs.{{ subtotal }}</span></p>
             <p>Tax (5%) <span>Rs.{{ gst }}</span></p>
             <p>Delivery Charges <span>Rs.{{ deliveryCharges }}</span></p>
-            <div class="promo">
-                <input type="text" class="input-promo" name="floatingInput" id="floatingInput" placeholder="Apply Voucher">
-                <button class="button-promo">Find Promo</button>
-            </div>
+            
             <hr class="divider">
             <p>Total <span>Rs.{{ overallTotal }}</span></p>
         </div>
@@ -577,11 +579,12 @@ p {
 /* -------------------------------------------------- dashboard-order styles --------------------------------------------- */
 .dashboard-order {
     width: 340px;
-    min-height: 100%;
+    /* min-height: 100%; */
     position: fixed;
     top: 0;
     right: 0;
     padding: 0.5rem 1.5rem;
+    overflow-y: scroll;
     background-color: #f6f8fa;
     z-index: 3;
 }
@@ -600,7 +603,7 @@ p {
 }
 
 .order-wrapper {
-    height: 180px;
+    height: 100px;
     width: 100%;
     overflow-y: scroll;
     margin: 20px 0;

@@ -49,7 +49,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                       <li><a class="dropdown-item p-2" href="#make-on-your-own-sec">Bake on your own</a></li>
-                      <li><a class="dropdown-item p-2" href="#" @click="Register()">Register</a></li>
+                      <li><a class="dropdown-item p-2" href="#" target="_self" @click="Register()">Register</a></li>
                       <!-- <li><a class="dropdown-item p-2" href="#">Login</a></li> -->
                       <li><a class="dropdown-item p-2" href="#" @click="ShopCard()">Order</a></li>
                       <li><a class="dropdown-item p-2" href="#" @click="ShopCard()">Checkout</a></li>

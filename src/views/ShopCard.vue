@@ -1,4 +1,5 @@
 <template>
+    <div>
     <!-- <HeaderComponent></HeaderComponent> -->
     <input type="checkbox" id="cart">
     
@@ -47,7 +48,7 @@
             </div>
         </div>
     </div>
-    overflow
+    
     <!-- Order dashboard -->
     <div class="dashboard-order">
         
@@ -87,11 +88,17 @@
             <hr class="divider">
             <p>Total <span>Rs.{{ overallTotal }}</span></p>
         </div>
-        <button class="checkout">Checkout</button>
+        <!-- <button class="checkout" @click="checkoutpage(cartItem)">Checkout</button> -->
+        <button class="checkout"  @click="checkoutpage()">Checkout</button>
     </div>
+</div>
+
+    
+
 </template>
 <script>
 import HeaderComponent from '@/components/HeaderComponent.vue';
+import Card from './Card.vue';
 
 export default {
     name: 'Menus',
@@ -99,6 +106,7 @@ export default {
     components:{HeaderComponent},
     data: function () {
         return {
+            ischeckout:false,
             DashboardMenu: [
                 {
                     id: 1,
@@ -210,6 +218,7 @@ export default {
         }
     },
     methods: {
+         
         click: function () {
             this.login = false;
             // this.success=true
@@ -231,11 +240,7 @@ export default {
             }
         },
         increaseQuantity(index) {
-            
-
-                this.cart[index].quantity += 1;
-            
-            
+                this.cart[index].quantity += 1;   
         },
         decreaseQuantity(index) {
             if(this.cart[index].quantity > 0)
@@ -251,7 +256,45 @@ export default {
             }
 
             return cartItem.price * cartItem.quantity;
+            
+
         },
+        checkoutpage(){
+        const orderDetails = this.cart.map(cartItem => ({
+        name: cartItem.name,
+        price: cartItem.price,
+        quantity: cartItem.quantity
+         }));
+
+         let order = {
+            total: 0,
+            tax: this.gst,
+            deliveryCharge: this.deliveryCharges,
+            items: orderDetails
+         }
+            
+             fetch("http://localhost:5000/checkout/placeOrders",{
+                    headers:{
+                        "Content-Type":"application/json"
+                    },
+                    method:"post",
+                    body: JSON.stringify(order )
+                })
+                .then((response)=>{
+                        if(!response.ok){
+                            throw new Error("Failed to fetch the data"+response.status);
+                        }
+                        return response.json();
+                    })
+                    .then((data)=>{
+                    
+                        console.log("Fetched data:",data);
+                        return true;
+                    })
+                    .catch((error)=>{
+                        console.error("Error:",error);
+                    })
+        }
     },
     computed: {
         // Define a computed property for the item total

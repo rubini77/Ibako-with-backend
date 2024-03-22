@@ -5,6 +5,8 @@ import LoginPage from "../views/LoginPage.vue"
 import ShopCard from "../views/ShopCard.vue"
 import Card from "../views/Card.vue"
 import AdminPage from '../views/AdminPage.vue'
+import ProductViewPage from '../views/ProductViewPage.vue'
+import UpdateProductPage from '../views/UpdateProductPage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -30,15 +32,20 @@ const router = createRouter({
       component: ShopCard
     },
     {
-      path: '/Card',
-      name: 'Card',
-      component: Card
-    },
-    {
       path: '/AdminPage',
       name: 'AdminPage',
       component: AdminPage
     },
+    {
+      path: '/ProductViewPage',
+      name: 'ProductViewPage',
+      component: ProductViewPage
+    },
+    {
+      path: '/UpdateProductPage',
+      name: 'UpdateProductPage',
+      component: UpdateProductPage
+    }
     
   ]
 })

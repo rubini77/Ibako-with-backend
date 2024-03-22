@@ -1,5 +1,5 @@
 <template>
-  <section>
+    <section>
     <nav class="navbar" style="background:linear-gradient(to top,#FBEDE5,white,#fce9e2);">
     <div class="container-fluid">
       <a href="/" style="text-decoration: none;"><img class="logo-img img-fluid " src="../assets/icon-img-1.jpg"></a>
@@ -44,73 +44,20 @@
       </div>
     </div>
   </section>  
-</template>
-  
-  <script>
-  import * as yup from 'yup';
 
-  export default {
-    data() {
-      return {
-        formData: {
-          name: '',
-          price: '',
-          time: '',
-          image: null
-        },
-        errors: {}
-      
-      }
-    },
-    methods: {
-      handleSubmit() {
-        const schema = yup.object().shape({
-          name: yup.string().required(),
-          price: yup.string().required(),
-          time: yup.string().required(),
-          image: yup.string().required()
-        });
-  
-        schema.validate(this.formData, { abortEarly: false })
-          .then(() => {
-            const formData = new FormData();
-            formData.append('file', this.formData.image);
-            formData.append('name', this.formData.name);
-            formData.append('price', this.formData.price);
-            formData.append('time', this.formData.time);
-  
-            fetch('http://localhost:5000/product/upload', {
-              method: 'POST',
-              body: formData
-            })
-            .then(response => {
-              console.log('Data Received ', response.json());
-              alert('Product Details Uploaded Successfully');
-              window.location.reload();
-            })
-            .catch((error) => {
-              console.error('Error:', error);
-            });
-          })
-          .catch(error => {
-            const errors = {};
-            error.inner.forEach(err => {
-              errors[err.path] = err.message;
-            });
-            this.errors = errors;
-          });
-      },
-      handleFile(event) {
-        this.formData.image = event.target.files[0];
-      }
+</template>
+
+<script>
+export default{
+    data(){
+        return{
+
+        }
     }
-  };
-  </script>
-  <style>
-  .logo-img{
-    height: 60px;
-    width: 70px;
-    border-radius: 50%;
 }
+
+</script>
+
+<style>
+
 </style>
-  

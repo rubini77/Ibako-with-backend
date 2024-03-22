@@ -34,7 +34,7 @@
             
         </div>
         <!-- :key="Menu.id" -->
-        <div class="dashboard-content" >
+        <!-- <div class="dashboard-content" >
             <div class="dashboard-menus" v-for="Menu in DashboardMenu" style="color: black;background-color: white;">
                 <img :src="Menu.img" alt="#" class="img-fluid dash-image" width="200" height="200">
                 <div class="details">
@@ -44,6 +44,20 @@
   <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
 </svg> {{ Menu.mints }}</p>
                     <button @click="addToCart(Menu, index)" class="btn btn-danger">Add Item</button>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="dashboard-content" >
+            <div class="dashboard-menus" v-for="product in products" style="color: black;background-color: white;">
+                <img :src="'http://localhost:5000/uploads/' + product.image" alt="#" class="img-fluid dash-image" width="200" height="200">
+                <div class="details">
+                    <h5>{{ product.name }}<span>Rs.{{ product.price }}</span></h5>
+                    <p><strong class="box-pizza">IBAKO</strong> Giving you a best food service</p>
+                    <p class="time text-black"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16">
+  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
+</svg> {{ product.time }}</p>
+                    <button @click="addToCart(product, index)" class="btn btn-danger">Add Item</button>
                 </div>
             </div>
         </div>
@@ -66,7 +80,9 @@
         </div>
         <div class="order-wrapper">
             <div class="order-card" v-for="(cartItem, index) in cart" :key="index">
-                <img :src="cartItem.img" class="order-img" alt="#">
+                
+                <img :src="'http://localhost:5000/uploads/' + cartItem.image"  class="order-img" alt="#">
+            
                 <div class="order-details">
                     <p>{{ cartItem.name }}</p>
                     <div>
@@ -98,6 +114,7 @@
 </template>
 <script>
 import HeaderComponent from '@/components/HeaderComponent.vue';
+import axios from 'axios';
 import Card from './Card.vue';
 
 export default {
@@ -107,117 +124,130 @@ export default {
     data: function () {
         return {
             ischeckout:false,
-            DashboardMenu: [
-                {
-                    id: 1,
-                    img: "src/assets/test-1-img.jpg",
-                    name: 'Straberry Cake',
-                    price: "Rs.180",
-                    mints: "15-30 mins"
-                },
-                {
-                    id: 2,
-                    img: "src/assets/test-2-img.jpg",
-                    name: 'Blueberry Cake',
-                    price: "Rs.80",
-                    mints: "15-30 mins"
-                },
-                {
-                    id: 3,
-                    img: "src/assets/test-3-img.jpg",
-                    name: 'Icecream Cake',
-                    price: "Rs.100",
-                    mints: "5-15 mins"
-                },
-                {
-                    id: 4,
-                    img: "src/assets/test-4-img.jpg",
-                    name: 'Vannila icecream',
-                    price: "Rs.120",
-                    mints: "15-30 mins"
-                },
-                {
-                    id: 5,
-                    img: "src/assets/test-5-img.jpg",
-                    name: 'All-in-one',
-                    price: "Rs.200",
-                    mints: "15-30 mins"
-                },
-                {
-                    id: 6,
-                    img: "src/assets/test-6-img.jpg",
-                    name: 'Donuts',
-                    price: "Rs.500",
-                    mints: "15-30 mins"
-                },
-                {
-                    id: 7,
-                    img: "src/assets/test-7-img.jpg",
-                    name: 'Multi-Donuts',
-                    price: "Rs.250",
-                    mints: "15-30 mins"
-                },
-                {
-                    id: 8,
-                    img: "src/assets/test-8-img.jpg",
-                    name: 'Breads',
-                    price: "Rs.300",
-                    mints: "15-30 mins"
-                },
-                {
-                    id: 9,
-                    img: "src/assets/test-9-img.jpg",
-                    name: 'Cup Cakes',
-                    price: "Rs.180",
-                    mints: "15-30 mins"
-                },
-                {
-                    id: 10,
-                    img: "src/assets/test-10-img.jpg",
-                    name: 'Cookies',
-                    price: "Rs.240",
-                    mints: "15-30 mins"
-                },
-                {
-                    id: 11,
-                    img: "src/assets/test-11-img.jpg",
-                    name: 'Biscuits',
-                    price: "Rs.220",
-                    mints: "15-30 mins"
-                },
-                {
-                    id: 12,
-                    img: "src/assets/test-12-img.jpg",
-                    name: 'Milk Shake',
-                    price: "Rs.120",
-                    mints: "15-30 mins"
-                },
-                {
-                    id: 13,
-                    img: "src/assets/test-13-img.jpg",
-                    name: 'Kulfi',
-                    price: "Rs.180",
-                    mints: "15-30 mins"
-                },
-                {
-                    id: 14,
-                    img: "src/assets/test-14-img.webp",
-                    name: 'Cream caramel pudding',
-                    price: "Rs.360",
-                    mints: "15-30 mins"
-                },
-                {
-                    id: 15,
-                    img: "src/assets/test-15-img.webp",
-                    name: 'Buttery cornmeal cake',
-                    price: "Rs.250",
-                    mints: "15-30 mins"
-                },
-            ],
+            products:[],
+            // DashboardMenu: [
+            //     {
+            //         id: 1,
+            //         img: "src/assets/test-1-img.jpg",
+            //         name: 'Straberry Cake',
+            //         price: "Rs.180",
+            //         mints: "15-30 mins"
+            //     },
+            //     {
+            //         id: 2,
+            //         img: "src/assets/test-2-img.jpg",
+            //         name: 'Blueberry Cake',
+            //         price: "Rs.80",
+            //         mints: "15-30 mins"
+            //     },
+            //     {
+            //         id: 3,
+            //         img: "src/assets/test-3-img.jpg",
+            //         name: 'Icecream Cake',
+            //         price: "Rs.100",
+            //         mints: "5-15 mins"
+            //     },
+            //     {
+            //         id: 4,
+            //         img: "src/assets/test-4-img.jpg",
+            //         name: 'Vannila icecream',
+            //         price: "Rs.120",
+            //         mints: "15-30 mins"
+            //     },
+            //     {
+            //         id: 5,
+            //         img: "src/assets/test-5-img.jpg",
+            //         name: 'All-in-one',
+            //         price: "Rs.200",
+            //         mints: "15-30 mins"
+            //     },
+            //     {
+            //         id: 6,
+            //         img: "src/assets/test-6-img.jpg",
+            //         name: 'Donuts',
+            //         price: "Rs.500",
+            //         mints: "15-30 mins"
+            //     },
+            //     {
+            //         id: 7,
+            //         img: "src/assets/test-7-img.jpg",
+            //         name: 'Multi-Donuts',
+            //         price: "Rs.250",
+            //         mints: "15-30 mins"
+            //     },
+            //     {
+            //         id: 8,
+            //         img: "src/assets/test-8-img.jpg",
+            //         name: 'Breads',
+            //         price: "Rs.300",
+            //         mints: "15-30 mins"
+            //     },
+            //     {
+            //         id: 9,
+            //         img: "src/assets/test-9-img.jpg",
+            //         name: 'Cup Cakes',
+            //         price: "Rs.180",
+            //         mints: "15-30 mins"
+            //     },
+            //     {
+            //         id: 10,
+            //         img: "src/assets/test-10-img.jpg",
+            //         name: 'Cookies',
+            //         price: "Rs.240",
+            //         mints: "15-30 mins"
+            //     },
+            //     {
+            //         id: 11,
+            //         img: "src/assets/test-11-img.jpg",
+            //         name: 'Biscuits',
+            //         price: "Rs.220",
+            //         mints: "15-30 mins"
+            //     },
+            //     {
+            //         id: 12,
+            //         img: "src/assets/test-12-img.jpg",
+            //         name: 'Milk Shake',
+            //         price: "Rs.120",
+            //         mints: "15-30 mins"
+            //     },
+            //     {
+            //         id: 13,
+            //         img: "src/assets/test-13-img.jpg",
+            //         name: 'Kulfi',
+            //         price: "Rs.180",
+            //         mints: "15-30 mins"
+            //     },
+            //     {
+            //         id: 14,
+            //         img: "src/assets/test-14-img.webp",
+            //         name: 'Cream caramel pudding',
+            //         price: "Rs.360",
+            //         mints: "15-30 mins"
+            //     },
+            //     {
+            //         id: 15,
+            //         img: "src/assets/test-15-img.webp",
+            //         name: 'Buttery cornmeal cake',
+            //         price: "Rs.250",
+            //         mints: "15-30 mins"
+            //     },
+            // ],
             cart: [],
         }
     },
+    mounted() {
+    this.fetchProducts();
+  },
     methods: {
+        fetchProducts() {
+      axios.get('http://localhost:5000/product/get')
+        .then(response => {
+          this.products = response.data;
+        })
+        .catch(error => {
+          console.error('Error fetching products:', error);
+        });
+    },
          
         click: function () {
             this.login = false;
@@ -225,13 +255,17 @@ export default {
         },
         addToCart(menu, index) {
             // Check if the item is already in the cart
-            const existingCartItem = this.cart.find(item => item.id === menu.id);
+            const existingCartItem = this.cart.findIndex(item => item.id === menu.id);
 
-            if (existingCartItem) {
-                existingCartItem.quantity += 1;
+            if (existingCartItem !== -1) {
+                this.cart[existingCartItemIndex].quantity += 1;
                 // existingCartItem.quantity -= 1;
             } else {
-                const numericPrice = parseFloat(menu.price.replace('Rs.', ''));
+                const numericPrice = parseFloat(menu.price);
+                if (isNaN(numericPrice)) {
+            console.error("Invalid price format for item:", menu);
+            return;
+        }
                 this.cart.push({
                     ...menu,
                     quantity: 1,
@@ -245,12 +279,12 @@ export default {
         decreaseQuantity(index) {
             if(this.cart[index].quantity > 0)
             {this.cart[index].quantity -= 1;}
-            else{
-                
+            else if(this.cart[index].quantity==0+1){
+                window.location.reload()
             }
         },
         calculateItemTotal(cartItem) {
-            // Check if cartItem or cartItem.price is undefined or null
+            // Check if cartItem ocartItem.price is undefined or null
             if (!cartItem || cartItem.price == null || cartItem.quantity == null) {
                 return 0; // or any default value you prefer
             }

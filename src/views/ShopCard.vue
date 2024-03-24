@@ -323,6 +323,7 @@ export default {
                     .then((data)=>{
                     
                         console.log("Fetched data:",data);
+                        alert("Order Placed Successfully")
                         return true;
                     })
                     .catch((error)=>{

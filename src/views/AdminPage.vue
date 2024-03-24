@@ -3,11 +3,12 @@
     <nav class="navbar" style="background:linear-gradient(to top,#FBEDE5,white,#fce9e2);">
     <div class="container-fluid">
       <a href="/" style="text-decoration: none;"><img class="logo-img img-fluid " src="../assets/icon-img-1.jpg"></a>
-        <span class="mb-0 p-3 h4" style="color: #ac7206;font-weight: bold;">AdminPage</span>
-      
-    </div>
+        </div>
     </nav>
-    <div class="pt-5 container d-flex justify-content-center">
+    <div class="text-center p-4">
+    <span class="mb-0 p-5 h4" style="color: #ac7206;font-weight: bold;">Admin Page</span>
+  </div> <hr>
+    <div class="pt-3 container d-flex justify-content-center">
       <div class="container border  p-3 m-1" style="max-width: 350px;">
         <Div class="fs-5 p-3 text-center"><strong>Add Products</strong></Div>
         <form @submit.prevent="handleSubmit">

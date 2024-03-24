@@ -1,9 +1,16 @@
 <template>
-    <div>
-      <h1>Amazon</h1>
-      <table class="table table-striped">
+    <div><nav class="navbar" style="background:linear-gradient(to top,#FBEDE5,white,#fce9e2);">
+    <div class="container-fluid">
+      <a href="/" style="text-decoration: none;"><img class="logo-img img-fluid " src="../assets/icon-img-1.jpg"></a>
+        </div>
+    </nav>
+    <div class="text-center p-4">
+    <span class="mb-0 p-5 h4" style="color: #ac7206;font-weight: bold;">View Products</span>
+  </div> <hr>
+    
+    <table class="table table-striped">
         <thead>
-          <tr>
+          <tr>  
             <th>Product ID</th>
             <th>Product Name</th>
             <th>Product Price</th>
@@ -71,6 +78,11 @@
   </script>
   
   <style>
+  .logo-img{
+    height: 60px;
+    width: 70px;
+    border-radius: 50%;
+}
   /* You can optionally add custom styles here */
   </style>
   

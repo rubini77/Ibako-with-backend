@@ -91,8 +91,8 @@ export default{
           formData.append('time', this.formData.time);
           // console.log("data" , this.formData.image)
 
-          fetch(`http://localhost:5000/product/UpdateProduct/${this.formData.id}`, {
-            method: 'PUT',
+          fetch("http://localhost:5000/product/UpdateProduct", {
+            method: 'POST',
             body: formData
           })
           // .then(response => {

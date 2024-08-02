@@ -46,7 +46,7 @@
                             <label for="formCheck" class="form-check-label text-secondary"><small>Remember Me</small></label>
                         </div>
                         <div class="forget">
-                         <small><a href="#">Forget password?</a></small>
+                         <small><a href="#" >Forget password?</a></small>
                     </div>
                   </div>
 

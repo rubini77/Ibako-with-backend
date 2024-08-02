@@ -83,6 +83,7 @@
     width: 70px;
     border-radius: 50%;
 }
-  /* You can optionally add custom styles here */
+  /* You can optionally add custom styles here
+   */
   </style>
   
